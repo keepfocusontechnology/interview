@@ -1,15 +1,17 @@
 package test.sort;
 
+import test.LogUtils;
+
 public class SortTest {
 
     public static void main(String[] args) {
 
 
-//        int[] nums = {3, 5, 2, 1, 5, 6, 7, 10, 9};
-//        MyArrayUtils.printArray(nums);
-//        SortSingle.getSingle().quickSort(nums,0,nums.length-1);
-//
-//        MyArrayUtils.printArray(nums);
+        int[] nums = {9, 5, 2, 1, 5, 6, 7, 10, 3};
+        LogUtils.printArray(nums);
+        SortSingle.getSingle().quickSort(nums,0,nums.length-1);
+
+        LogUtils.printArray(nums);
 
 
         int i = 11;
@@ -21,7 +23,7 @@ public class SortTest {
 //
 //        int n = re ^ y;
 
-        System.out.println(add2(i, j));
+//        System.out.println(add2(i, j));
     }
 
     public static int add(int a, int b) {

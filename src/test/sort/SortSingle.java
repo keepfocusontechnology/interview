@@ -47,8 +47,8 @@ public class SortSingle {
      * @return
      */
     public int[] quickSort(int[] arrs, int left, int right) {
-        if (null == arrs || arrs.length < 2) {
-            return null;
+        if (arrs.length < 2) {
+            return arrs;
         }
 
         if (left == right) {
@@ -64,25 +64,16 @@ public class SortSingle {
     private int getMid(int[] arrs, int left, int right) {
 
         int temp = arrs[left];
-        while (left < right && arrs[left] < arrs[right]) {
 
-            while (left < right && arrs[right] >= temp) {
+        while (left < right) {
+            while (left < right && temp <= arrs[right]) {
                 right--;
             }
-
-            if (left < right) {
-                arrs[left] = arrs[right];
-                left++;
-            }
-
+            arrs[left] = arrs[right];
             while (left < right && arrs[left] < temp) {
                 left++;
             }
-
-            if (left < right) {
-                arrs[right] = arrs[left];
-                right--;
-            }
+            arrs[right] = arrs[left];
         }
         arrs[left] = temp;
         return left;
