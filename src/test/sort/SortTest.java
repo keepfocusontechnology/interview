@@ -7,7 +7,7 @@ public class SortTest {
     public static void main(String[] args) {
 
 
-        int[] nums = {9, 5, 2, 1, 5, 6, 7, 10, 3};
+        int[] nums = {3, 8, 1, 9, 4, 5, 7, 10, 6};
         LogUtils.printArray(nums);
         SortSingle.getSingle().quickSort(nums,0,nums.length-1);
 

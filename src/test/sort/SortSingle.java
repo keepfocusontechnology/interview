@@ -51,13 +51,11 @@ public class SortSingle {
             return arrs;
         }
 
-        if (left == right) {
-            return arrs;
+        if (left < right) {
+            int mid = getMid(arrs, left, right);
+            quickSort(arrs, left, mid);
+            quickSort(arrs, mid + 1, right);
         }
-
-        int mid = getMid(arrs, left, right);
-        quickSort(arrs, left, mid);
-        quickSort(arrs, mid + 1, right);
         return arrs;
     }
 
@@ -69,11 +67,12 @@ public class SortSingle {
             while (left < right && temp <= arrs[right]) {
                 right--;
             }
-            arrs[left] = arrs[right];
-            while (left < right && arrs[left] < temp) {
+                arrs[left] = arrs[right];
+
+            while (left < right && arrs[left] <= temp) {
                 left++;
             }
-            arrs[right] = arrs[left];
+                arrs[right] = arrs[left];
         }
         arrs[left] = temp;
         return left;

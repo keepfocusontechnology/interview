@@ -24,7 +24,7 @@ public class LinkedTest {
         list.add(node4);
         list.add(node5);
 
-//        list.printSelf();
+        list.printSelf();
 //        SysUtils.log("----");
 //        final Integer delete = list.delete(1);
 //        SysUtils.log(delete);
