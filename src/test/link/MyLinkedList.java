@@ -16,6 +16,11 @@ public class MyLinkedList<T> {
 
     private int size;
 
+
+    public int size() {
+        return size;
+    }
+
     public MyLinkedList() {
         firstNode = new MyNode<>();
         lastNode = firstNode;
@@ -74,6 +79,27 @@ public class MyLinkedList<T> {
         return cur.t;
     }
 
+    public void delete(MyNode<T> node) {
+        if (node == null) {
+            return;
+        }
+
+        for (int i = 0; i < size; i++) {
+            if (getNode(i) == node) {
+                if (i == 0) {
+                    final MyNode<T> node1 = getNode(0);
+                    firstNode.next = node1.next;
+                    size--;
+                    return;
+                }
+                MyNode<T> cur = getNode(i - 1);
+                cur.next = node.next;
+                size--;
+                break;
+            }
+        }
+    }
+
 
     public MyNode<T> getNode(int index) {
         if (index < 0 || index >= size) {
@@ -101,7 +127,7 @@ public class MyLinkedList<T> {
 //            node = node.next;
 //        }
 
-        while (node.next != null) {
+        while (node != null) {
             LogUtils.log(node.t);
             node = node.next;
         }

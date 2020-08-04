@@ -2,6 +2,7 @@ package test.key;
 
 import test.LogUtils;
 import test.link.MyLinkedList;
+import test.link.MyNode;
 
 /**
  * 每天一默写
@@ -81,12 +82,8 @@ public class ImportKey {
     }
 
 
-    // 1, 0
     private int getNums(int x, int y) {
-        if (x == 0 || y == x) {
-            return 1;
-        }
-        if ( y == 0) {
+        if (x == 0 || y == x || y == 0) {
             return 1;
         }
         int c = getNums(x - 1, y - 1) + getNums(x - 1, y);
@@ -97,15 +94,48 @@ public class ImportKey {
     /**
      * 按数字大小合并两个单链表
      *
-     * @param list1
-     * @param list2
      * @return
      */
-    public MyLinkedList<Integer> mergeTwoNode(MyLinkedList<Integer> list1, MyLinkedList<Integer> list2) {
+    public MyNode<Integer> mergeTwoNode(MyNode<Integer> node, MyNode<Integer> node1) {
 
-        //例如：node1 = {1,2,3,4} node2 = {1,2,3,5},合并完{1,1,2,2,3,3,4,5}
+        MyNode<Integer> head = null;
 
-        return null;
+        if (node == null) {
+            return node1;
+        }
+        if (node1 == null) {
+            return node;
+        }
+        if (node.t <= node1.t) {//如果l1节点的值小于等于l2节点的值，由于这两个链表是有序的，所以合并后最小的节点(head节点)就是它们两者中的小者
+            head = node;
+            node = node.next;//后移，用于继续比较选出接下来最小的节点
+        }else {
+            head = node1;
+            node1 = node1.next;
+        }
+
+        MyNode<Integer> result= head;
+
+        while (node != null && node1 != null) {
+            if (node.t <= node1.t) {
+                result.next = node;
+                node = node.next;
+            } else {
+                result.next = (node1);
+                node1 = node1.next;
+            }
+            result = result.next;
+        }
+
+        if (node != null) {
+            result.next = node;
+        }
+
+        if (node1 != null) {
+            result.next = node1;
+        }
+
+        return head;
     }
 
 
