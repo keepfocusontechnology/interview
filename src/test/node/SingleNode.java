@@ -1,8 +1,5 @@
 package test.node;
 
-import test.sort.SortSingle;
-
-import java.util.Collections;
 import java.util.Stack;
 
 public class SingleNode {
