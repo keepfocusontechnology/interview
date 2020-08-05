@@ -1,8 +1,6 @@
 package test.key;
 
 import test.LogUtils;
-import test.link.MyLinkedList;
-import test.link.MyNode;
 
 /**
  * 测试归类
@@ -26,16 +24,16 @@ public class ImportTest {
 //        LogUtils.log("快速排序后:");
 //
 //        LogUtils.printArray(importKey.quickSort(nums, 0, nums.length - 1));
-//
+
 //
 //        LogUtils.log("杨辉三角打印:");
 //
 //        importKey.printTriangle(3);
 
-
-        MyNode<Integer> node1 = new MyNode<>(1);
-        MyNode<Integer> node2 = new MyNode<>(2);
-        MyNode<Integer> node3 = new MyNode<>(3);
+//
+//        MyNode<Integer> node1 = new MyNode<>(1);
+//        MyNode<Integer> node2 = new MyNode<>(2);
+//        MyNode<Integer> node3 = new MyNode<>(3);
 //        MyNode<Integer> node4 = new MyNode<>(4);
 //        MyNode<Integer> node5 = new MyNode<>(5);
 //        MyNode<Integer> node6 = new MyNode<>(6);
@@ -53,18 +51,25 @@ public class ImportTest {
 //
 //        LogUtils.log(node);
 
-        node1.next=node2;
-        node2.next=node3;
-
-//        LogUtils.log(node1);
-
-        importKey.reverse(node1);
+//        node1.next=node2;
+//        node2.next=node3;
+//
+////        LogUtils.log(node1);
+//
+//        importKey.reverse(node1);
 //        LogUtils.log(importKey.reverse(node1));
 
 
 //        LogUtils.log(importKey.getJC(4));
 
 //        LogUtils.log(importKey.isTwoPow(5));
+
+        int x = 4;
+        int y = 5;
+
+        int n = importKey.getX(x, y);
+
+        LogUtils.log(n);
 
 
     }

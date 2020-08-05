@@ -21,19 +21,14 @@ public class ImportKey {
      * @return
      */
     public int[] quickSort(int[] nums, int left, int right) {
-
-        if (null == nums || nums.length < 2) { //边界情况控制
+        if (left >= right || nums.length < 2) {
             return nums;
         }
 
-        if (left < right) {
-            int mid = getMid(nums, left, right);
-            //递归
-            quickSort(nums, left, mid);
-            quickSort(nums, mid + 1, right);
-        }
+        int mid = getMid(nums, left, right);
 
-
+        quickSort(nums, left, mid);
+        quickSort(nums, mid + 1, right);
         return nums;
     }
 
@@ -43,20 +38,17 @@ public class ImportKey {
 
         while (left < right) {
 
-            while (left < right && temp <= nums[right]) {
+            while (left < right && nums[right] >= temp) {
                 right--;
             }
 
-            if (left < right) {
-                nums[left] = nums[right];
-            }
-            while (left < right && temp >= nums[right]) {
+            nums[left] = nums[right];
+
+            while (left < right && nums[left] <= temp) {
                 left++;
             }
-            if (left < right)
-                nums[right] = nums[left];
+            nums[right] = nums[left];
         }
-
         nums[left] = temp;
         return left;
     }
@@ -132,6 +124,24 @@ public class ImportKey {
         return head;
     }
 
+
+    /**
+     * 获取乘积，不用乘法
+     *
+     * @param x
+     * @param y
+     * @return
+     */
+    public int getX(int a, int b) {
+        while (b != 0) { // 当进位为 0 时跳出
+            int c = (a & b) << 1;  // c = 进位
+            System.out.println("c = " + c);
+            a ^= b; // a = 非进位和
+            System.out.println("a = " + a);
+            b = c; // b = 进位
+        }
+        return a;
+    }
 
     /**
      * 单链表反转
