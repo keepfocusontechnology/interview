@@ -1,7 +1,5 @@
 package test.key;
 
-import test.LogUtils;
-import test.link.MyLinkedList;
 import test.link.MyNode;
 
 /**
@@ -67,15 +65,12 @@ public class ImportKey {
      * 打印杨辉三角形
      */
     public void printTriangle(int row) {
-        if (row == 1) {
-            LogUtils.log(1);
-        }
         for (int i = 0; i < row; i++) {
-            for (int j = 0; j < row - i; j++) {
+            for (int j = i; j < row - j; j++) {
                 System.out.print(" ");
             }
-            for (int j = 0; j <= i; j++) {
-                System.out.print(getNums(i, j) + " ");
+            for (int n = 0; n <= i; n++) {
+                System.out.print(getNums(i, n) + " ");
             }
             System.out.println("");
         }
@@ -83,11 +78,10 @@ public class ImportKey {
 
 
     private int getNums(int x, int y) {
-        if (x == 0 || y == x || y == 0) {
+        if (x == 0 || y == 0 || x == y) {
             return 1;
         }
-        int c = getNums(x - 1, y - 1) + getNums(x - 1, y);
-        return c;
+        return getNums(x - 1, y - 1) + getNums(x - 1, y);
     }
 
 
@@ -109,12 +103,12 @@ public class ImportKey {
         if (node.t <= node1.t) {//如果l1节点的值小于等于l2节点的值，由于这两个链表是有序的，所以合并后最小的节点(head节点)就是它们两者中的小者
             head = node;
             node = node.next;//后移，用于继续比较选出接下来最小的节点
-        }else {
+        } else {
             head = node1;
             node1 = node1.next;
         }
 
-        MyNode<Integer> result= head;
+        MyNode<Integer> result = head;
 
         while (node != null && node1 != null) {
             if (node.t <= node1.t) {
@@ -143,8 +137,14 @@ public class ImportKey {
      * 单链表反转
      */
 
-    public MyLinkedList<Integer> reverse(MyLinkedList<Integer> src) {
-        return null;
+    public MyNode<Integer> reverse(MyNode<Integer> src) {
+        if (src == null || src.next == null) {
+            return src;
+        }
+        MyNode reverse = reverse(src.next);
+        src.next.next = src;
+        src.next = null;
+        return reverse;
     }
 
 
@@ -160,9 +160,24 @@ public class ImportKey {
     /**
      * 算法判断一个数是不是2的n次幂
      */
-    public boolean isTwoPow() {
+    public boolean isTwoPow(int n) {
+        int i = n & (n - 1);
+        return i == 0;
+    }
 
-        return false;
+
+    /**
+     * 获取阶乘
+     *
+     * @param n
+     * @return
+     */
+    public int getJC(int n) {
+        if (n == 0 || n == 1) {
+            return 1;
+        } else {
+            return n * getJC(n - 1);
+        }
     }
 
 
