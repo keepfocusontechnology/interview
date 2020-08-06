@@ -82,54 +82,32 @@ public class ImportKey {
      *
      * @return
      */
-    public MyNode<Integer> mergeTwoNode(MyNode<Integer> node, MyNode<Integer> node1) {
-
-        MyNode<Integer> head = null;
-
-        if (node == null) {
-            return node1;
+    public MyNode<Integer> mergeTwoNode(MyNode<Integer> l1, MyNode<Integer> l2) {
+        if (l1 == null) {
+            return l2;
         }
-        if (node1 == null) {
-            return node;
+
+        if (l2 == null) {
+            return l1;
         }
-        if (node.t <= node1.t) {//如果l1节点的值小于等于l2节点的值，由于这两个链表是有序的，所以合并后最小的节点(head节点)就是它们两者中的小者
-            head = node;
-            node = node.next;//后移，用于继续比较选出接下来最小的节点
+
+        if (l1.t <= l2.t) {
+            l1.next = mergeTwoNode(l1.next, l2);
+            System.out.println("return l1" + l1);
+            return l1;
         } else {
-            head = node1;
-            node1 = node1.next;
+            l2.next = mergeTwoNode(l1, l2.next);
+            System.out.println("return l1" + l2);
+            return l2;
         }
-
-        MyNode<Integer> result = head;
-
-        while (node != null && node1 != null) {
-            if (node.t <= node1.t) {
-                result.next = node;
-                node = node.next;
-            } else {
-                result.next = (node1);
-                node1 = node1.next;
-            }
-            result = result.next;
-        }
-
-        if (node != null) {
-            result.next = node;
-        }
-
-        if (node1 != null) {
-            result.next = node1;
-        }
-
-        return head;
     }
 
 
     /**
      * 获取乘积，不用乘法
      *
-     * @param x
-     * @param y
+     * @param a
+     * @param b
      * @return
      */
     public int getX(int a, int b) {
