@@ -65,7 +65,7 @@ public class MyLinkedList<T> {
             final MyNode<T> next = firstNode.next;
             firstNode.next = next.next;
             size--;
-            return next.t;
+            return next.val;
         }
         MyNode<T> cur = getNode(index);
         for (int i = 0; i < size; i++) {
@@ -76,7 +76,7 @@ public class MyLinkedList<T> {
                 break;
             }
         }
-        return cur.t;
+        return cur.val;
     }
 
     public void delete(MyNode<T> node) {
@@ -123,12 +123,12 @@ public class MyLinkedList<T> {
         MyNode<T> node = firstNode.next;
 //
 //        for (int i = 0; i < size; i++) {
-//            SysUtils.log(node.t);
+//            SysUtils.log(node.val);
 //            node = node.next;
 //        }
 
         while (node != null) {
-            LogUtils.log(node.t);
+            LogUtils.log(node.val);
             node = node.next;
         }
     }

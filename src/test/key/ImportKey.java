@@ -94,7 +94,7 @@ public class ImportKey {
             return l1;
         }
 
-        if (l1.t <= l2.t) {
+        if (l1.val <= l2.val) {
             l1.next = mergeTwoNode(l1.next, l2);
             System.out.println("return l1" + l1);
             return l1;
@@ -129,13 +129,13 @@ public class ImportKey {
      */
 
     public MyNode<Integer> reverse(MyNode<Integer> src) {
-        if (src == null || src.next == null) {
+        if (src.next == null) {
             return src;
         }
-        MyNode reverse = reverse(src.next);
+        MyNode<Integer> node = reverse(src.next);
         src.next.next = src;
         src.next = null;
-        return reverse;
+        return node;
     }
 
 
@@ -184,29 +184,60 @@ public class ImportKey {
      */
     public String getStr(String s, int rowNum) {
 
-        if(rowNum < 2) return s;
+        if (rowNum < 2) return s;
         List<StringBuilder> rows = new ArrayList<>();
 
         for (int j = 0; j < rowNum; j++) {
             rows.add(new StringBuilder());
         }
 
-            int i = 0;
-            int flag = -1;
+        int i = 0;
+        int flag = -1;
 
-            for (char c : s.toCharArray()) {
-                rows.get(i).append(c);
-                if (i == 0 || i == rowNum - 1) {
-                    flag = -flag;
-                }
-
-                i += flag;
+        for (char c : s.toCharArray()) {
+            rows.get(i).append(c);
+            if (i == 0 || i == rowNum - 1) {
+                flag = -flag;
             }
-            StringBuilder res = new StringBuilder();
-            for (StringBuilder row : rows) res.append(row);
-            return res.toString();
+
+            i += flag;
+        }
+        StringBuilder res = new StringBuilder();
+        for (StringBuilder row : rows) res.append(row);
+        return res.toString();
+    }
+
+    public MyNode<Integer> addTwoNumbers(MyNode<Integer> l1, MyNode<Integer> l2) {
+        StringBuilder s1 = new StringBuilder();
+        while (l1!= null) {
+            s1.append(l1.val);
+            l1 = l1.next;
         }
 
+        StringBuilder s2 = new StringBuilder();
+        while (l2 != null) {
+            s2.append(l2.val);
+            l2 = l2.next;
+        }
+
+        int result = Integer.valueOf(s1.toString()) +
+                Integer.valueOf(s2.toString());
+
+        String temp = String.valueOf(result);
+        char[] ctrs = temp.toCharArray();
+
+        MyNode<Integer> head = new MyNode<>(Integer.valueOf(ctrs[0] + ""));
+        MyNode<Integer> node = new MyNode<>(Integer.valueOf(ctrs[1] + ""));
+        head.next = node;
+        for (int i = 2; i < ctrs.length; i++) {
+            MyNode<Integer> res = new MyNode<>(Integer.valueOf(ctrs[2] + ""));
+            node.next = res;
+            node = res;
+        }
+
+
+        return reverse(head);
+    }
 
 
 }

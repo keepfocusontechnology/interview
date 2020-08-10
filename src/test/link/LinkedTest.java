@@ -31,7 +31,7 @@ public class LinkedTest {
 //        SysUtils.log("----");
 //        list.printSelf();
 
-        boolean circle = list.isCircle();
-        LogUtils.log(circle);
+//        boolean circle = list.isCircle();
+//        LogUtils.log(circle);
     }
 }

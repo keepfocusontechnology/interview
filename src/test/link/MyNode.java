@@ -9,25 +9,25 @@ package test.link;
  **/
 public class MyNode<T> {
 
-    public T t;
+    public T val;
     public MyNode next;
 
-    public MyNode(T t, MyNode next) {
-        this.t = t;
+    public MyNode(T val, MyNode next) {
+        this.val = val;
         this.next = next;
     }
 
     public MyNode() {
     }
 
-    public MyNode(T t) {
-        this.t = t;
+    public MyNode(T val) {
+        this.val = val;
     }
 
     @Override
     public String toString() {
         return "MyNode{" +
-                "t=" + t +
+                "val=" + val +
                 ", next=" + next +
                 '}';
     }

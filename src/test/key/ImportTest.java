@@ -1,6 +1,7 @@
 package test.key;
 
 import test.LogUtils;
+import test.link.MyNode;
 
 /**
  * 测试归类
@@ -37,12 +38,22 @@ public class ImportTest {
 //        MyNode<Integer> node = importKey.mergeTwoNode(node1, node2_2);
 //
 //        LogUtils.log(node);
+        MyNode<Integer> node1 = new MyNode<>(1);
+        MyNode<Integer> node2 = new MyNode<>(8);
+//        MyNode<Integer> node3 = new MyNode<>(3);
 
-//        node1.next=node2;
+        node1.next=node2;
 //        node2.next=node3;
-//
-////        LogUtils.log(node1);
-//
+
+        MyNode<Integer> node1_1 = new MyNode<>(0);
+//        MyNode<Integer> node2_2 = new MyNode<>(6);
+//        MyNode<Integer> node3_3 = new MyNode<>(4);
+
+//        node1_1.next=node2_2;
+//        node2_2.next=node3_3;
+
+//        LogUtils.log(node1);
+
 //        importKey.reverse(node1);
 //        LogUtils.log(importKey.reverse(node1));
 
@@ -58,6 +69,8 @@ public class ImportTest {
 //
 //        LogUtils.log(n);
 
-        System.out.println(importKey.getStr("12345789", 3));
+
+        LogUtils.log(importKey.addTwoNumbers(node1,node1_1));
+
     }
 }
