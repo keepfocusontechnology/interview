@@ -1,9 +1,11 @@
 package test.key;
 
 import test.link.MyNode;
+import test.node.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 每天一默写
@@ -143,7 +145,43 @@ public class ImportKey {
      * 二叉树Z字型打印
      */
 
-    public void printZTree() {
+    public List<ArrayList<Integer>> printZTree(TreeNode pRoot) {
+            ArrayList<ArrayList<Integer>> arrayList = new ArrayList<ArrayList<Integer>>();
+            if(pRoot == null)
+                return arrayList;
+
+            Stack<TreeNode> stack = new Stack<>();
+            Stack<TreeNode> stack2 = new Stack<>();
+            int layer = 1;
+            stack.push(pRoot);
+
+            while(!stack.isEmpty() || !stack2.isEmpty()) {		//stack判空条件不是null而是isEmpty()
+                ArrayList<Integer> temp = new ArrayList<>();
+                while(layer % 2 == 1 && !stack.isEmpty()) {
+                    TreeNode node = stack.pop();
+                    if(node != null) {
+                        temp.add(node.val);
+                        stack2.push(node.left);
+                        stack2.push(node.right);
+                    }
+                }
+
+                while(layer % 2 != 1 && !stack2.isEmpty()) {
+                    TreeNode node = stack2.pop();
+                    if(node != null) {
+                        temp.add(node.val);
+                        stack.push(node.right);
+                        stack.push(node.left);
+                    }
+                }
+
+                if(temp.size() != 0) {
+                    arrayList.add(temp);
+                }
+                layer ++;
+            }
+
+            return arrayList;
 
     }
 
