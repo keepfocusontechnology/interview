@@ -1,11 +1,10 @@
 package test.key;
 
+import test.LogUtils;
 import test.link.MyNode;
 import test.node.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * 每天一默写
@@ -146,43 +145,89 @@ public class ImportKey {
      */
 
     public List<ArrayList<Integer>> printZTree(TreeNode pRoot) {
-            ArrayList<ArrayList<Integer>> arrayList = new ArrayList<ArrayList<Integer>>();
-            if(pRoot == null)
-                return arrayList;
+        ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+        if(pRoot == null)return list;//注意考虑到空元素，并且此时返回list，不是null
 
-            Stack<TreeNode> stack = new Stack<>();
-            Stack<TreeNode> stack2 = new Stack<>();
-            int layer = 1;
-            stack.push(pRoot);
-
-            while(!stack.isEmpty() || !stack2.isEmpty()) {		//stack判空条件不是null而是isEmpty()
-                ArrayList<Integer> temp = new ArrayList<>();
-                while(layer % 2 == 1 && !stack.isEmpty()) {
-                    TreeNode node = stack.pop();
-                    if(node != null) {
-                        temp.add(node.val);
-                        stack2.push(node.left);
-                        stack2.push(node.right);
-                    }
+        Stack<TreeNode> stack1 = new Stack<>();
+        Stack<TreeNode> stack2 = new Stack<>();
+        stack2.add(pRoot);
+        while (!stack2.isEmpty() || !stack1.isEmpty()){
+            ArrayList<Integer> subList = new ArrayList<>();
+            if(!stack2.isEmpty()){
+                //需要将stack2中的元素全部弹出，此时才是该层的所有节点
+                while (!stack2.isEmpty()){
+                    TreeNode curNode = stack2.pop();
+                    subList.add(curNode.val);
+                    //弹出stack2中的元素的同时，需要将其中元素的左->右节点压入栈stack1
+                    if(curNode.left != null) stack1.add(curNode.left);
+                    if(curNode.right != null) stack1.add(curNode.right);
                 }
-
-                while(layer % 2 != 1 && !stack2.isEmpty()) {
-                    TreeNode node = stack2.pop();
-                    if(node != null) {
-                        temp.add(node.val);
-                        stack.push(node.right);
-                        stack.push(node.left);
-                    }
+                list.add(subList);
+            } else {
+                //需要将stack1中的元素全部弹出，此时才是该层的所有节点
+                while (!stack1.isEmpty()){
+                    TreeNode curNode1 = stack1.pop();
+                    subList.add(curNode1.val);
+                    //弹出stack1中的元素的同时，需要将其中元素的右->左节点压入栈stack2
+                    if(curNode1.right != null) stack2.add(curNode1.right);
+                    if(curNode1.left != null) stack2.add(curNode1.left);
                 }
-
-                if(temp.size() != 0) {
-                    arrayList.add(temp);
-                }
-                layer ++;
+                list.add(subList);
             }
 
-            return arrayList;
+        }
+        return list;
+    }
 
+
+    /**
+     * 树的广度遍历
+     * @param node
+     */
+    public void bfs(TreeNode node){
+        if(node == null){
+            return;
+        }
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()){
+            final TreeNode pop = queue.poll();
+            LogUtils.log(pop.val+" ");
+
+            if(pop.left!=null){
+                queue.add(pop.left);
+            }
+            if(pop.right!=null){
+                queue.add(pop.right);
+            }
+
+        }
+    }
+
+
+    /**
+     * 树的深度遍历
+     * @param node
+     */
+    public void dfs(TreeNode node){
+        if(node == null){
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(node);
+
+        while (!stack.isEmpty()){
+            final TreeNode pop = stack.pop();
+           LogUtils.log(pop.val+" ");
+            if(pop.right!=null){
+                stack.push(pop.right);
+            }
+
+            if(pop.left!=null){
+                stack.push(pop.left);
+            }
+        }
     }
 
 

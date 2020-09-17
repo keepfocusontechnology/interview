@@ -81,6 +81,8 @@ public class ImportTest {
         root1.right.left = new TreeNode(6);
         root1.right.right = new TreeNode(7);
 
-        System.out.println(importKey.printZTree(root1));
+//        System.out.println(importKey.printZTree(root1));
+//        importKey.dfs(root1);
+        importKey.bfs(root1);
     }
 }

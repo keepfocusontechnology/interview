@@ -2,13 +2,22 @@ package test;
 
 public class LogUtils {
 
+    public static void logLn(int s) {
+        System.out.println(s);
+    }
     public static void log(int s) {
+        System.out.print(s);
+    }
+
+    public static void logLn(String s) {
         System.out.println(s);
     }
 
+
     public static void log(String s) {
-        System.out.println(s);
+        System.out.print(s);
     }
+
 
     public static void log(Object s) {
         System.out.println(s);
