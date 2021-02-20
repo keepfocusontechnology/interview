@@ -17,15 +17,18 @@ public class ImportTest {
         final ImportKey importKey = new ImportKey();
 
 
-//        LogUtils.log("快速排序前:");
+        LogUtils.log("排序前:");
 //
 //
-//        int[] nums = {3, 8, 1, 9, 4, 5, 7, 10, 6};
-//        LogUtils.printArray(nums);
+        int[] nums = {3, 8, 1, 9, 4, 5, 7, 10, 6};
+        LogUtils.printArray(nums);
 //
-//        LogUtils.log("快速排序后:");
-//
+        LogUtils.log("排序后:");
+
 //        LogUtils.printArray(importKey.quickSort(nums, 0, nums.length - 1));
+        LogUtils.printArray(importKey.straightSort(nums));
+
+
 
 //
 //        LogUtils.log("杨辉三角打印:");
@@ -73,16 +76,16 @@ public class ImportTest {
 
 //        LogUtils.log(importKey.addTwoNumbers(node1,node1_1));
 
-        TreeNode root1 = new TreeNode(1);
-        root1.left = new TreeNode(2);
-        root1.right = new TreeNode(3);
-        root1.left.left = new TreeNode(4);
-        root1.left.right = new TreeNode(5);
-        root1.right.left = new TreeNode(6);
-        root1.right.right = new TreeNode(7);
+//        TreeNode root1 = new TreeNode(1);
+//        root1.left = new TreeNode(2);
+//        root1.right = new TreeNode(3);
+//        root1.left.left = new TreeNode(4);
+//        root1.left.right = new TreeNode(5);
+//        root1.right.left = new TreeNode(6);
+//        root1.right.right = new TreeNode(7);
 
 //        System.out.println(importKey.printZTree(root1));
 //        importKey.dfs(root1);
-        importKey.bfs(root1);
+//        importKey.bfs(root1);
     }
 }

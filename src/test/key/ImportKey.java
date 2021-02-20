@@ -323,4 +323,23 @@ public class ImportKey {
     }
 
 
+    /**
+     * 插入排序
+     */
+    int[] straightSort(int[] arr) {
+        int tmp;
+        int i;
+        int j;
+        int len = arr.length;
+        for (i = 1; i < len; i++) {
+            tmp = arr[i];
+            for (j = i - 1; j >= 0 && arr[j] > tmp; j--) {
+                arr[j + 1] = arr[j];
+            }
+            arr[j + 1] = tmp;
+        }
+        return arr;
+    }
+
+
 }
