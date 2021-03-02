@@ -342,4 +342,31 @@ public class ImportKey {
     }
 
 
+    /***
+     * 希尔排序内核,仿插入排序改造
+     */
+    void shell_sort_kernel(int[] arr,int gap){
+        int tmp,i,j,len;
+        len = arr.length;
+        for(i=gap;i<len;i++){
+            tmp=arr[i];
+            for(j=i-gap;j>=0 && arr[j]>tmp;j-=gap){
+                arr[j+gap]=arr[j];
+            }
+            arr[j+gap]=tmp;
+        }
+    }
+    /***
+     * 希尔排序
+     */
+    int[] shell_sort(int[] arr){
+        int gap = arr.length / 2;
+        while (gap>=1){
+            shell_sort_kernel(arr,gap);
+            LogUtils.logArr(arr);
+            gap = gap/2;
+        }
+        return arr;
+    }
+
 }

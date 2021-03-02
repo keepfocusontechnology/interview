@@ -26,7 +26,7 @@ public class ImportTest {
         LogUtils.log("排序后:");
 
 //        LogUtils.printArray(importKey.quickSort(nums, 0, nums.length - 1));
-        LogUtils.printArray(importKey.straightSort(nums));
+        LogUtils.printArray(importKey.shell_sort(nums));
 
 
 

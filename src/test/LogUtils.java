@@ -50,6 +50,10 @@ public class LogUtils {
         }
     }
 
+    public static void logArr(int[] nums){
+        printArray(nums);
+    }
+
     public static void printArray(int[] chars) {
         if (chars.length <= 0) {
             System.out.println("error len = 0");
