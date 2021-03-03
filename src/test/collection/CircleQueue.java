@@ -1,4 +1,4 @@
-package test.queue;
+package test.collection;
 
 
 import test.LogUtils;
