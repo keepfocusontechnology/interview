@@ -46,7 +46,7 @@ public class Maze {
                 {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
         };
         MoveStrategy.init(map);
-        MoveStrategy.singleTon().move(new Point(1, 1), new Point(4, 1));
+        MoveStrategy.singleTon().move(new Point(8, 8), new Point(6, 3));
     }
 
     static class Point {
@@ -91,11 +91,7 @@ public class Maze {
 
         @Override
         public String toString() {
-            return "Point{" +
-                    "x=" + x +
-                    ", y=" + y +
-                    ", isPassed=" + isPassed +
-                    '}';
+                   return "["+x+","+y+"]";
         }
     }
 
@@ -203,8 +199,10 @@ public class Maze {
             stack.push(curNode);
             curNode.setPassed(true);
             while (true) {
-                if (src.equals(target)) {
-                    LogUtils.log("到达终点了");
+                if (curNode.equals(target)) {
+                    LogUtils.log("到达终点了,终点栈是\n");
+                    LogUtils.printArray(stack);
+                    break;
                 }
                 final List<Point> nextPoints = findNextPoints(curNode);
                 if (nextPoints.isEmpty()) {
@@ -213,8 +211,8 @@ public class Maze {
                         break;
                     } else {
                         stack.pop();
-                        if(stack.isEmpty()){
-                            LogUtils.log("111没有路径");
+                        if (stack.isEmpty()) {
+                            LogUtils.log("没有发现路径");
                             break;
                         }
                         curNode = stack.peek();
@@ -224,7 +222,6 @@ public class Maze {
                     stack.push(point);
                     curNode = point;
                     curNode.setPassed(true);
-                    LogUtils.log(point);
                 }
             }
         }

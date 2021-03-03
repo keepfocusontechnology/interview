@@ -1,10 +1,13 @@
 package test;
 
+import java.util.Stack;
+
 public class LogUtils {
 
     public static void logLn(int s) {
         System.out.println(s);
     }
+
     public static void log(int s) {
         System.out.print(s);
     }
@@ -23,14 +26,15 @@ public class LogUtils {
         System.out.println(s);
     }
 
-    public static void printArray(int[][] arr){
-        for(int x=0;x<arr.length;x++){
-            for(int y=0;y<arr[x].length;y++){
+    public static void printArray(int[][] arr) {
+        for (int x = 0; x < arr.length; x++) {
+            for (int y = 0; y < arr[x].length; y++) {
                 System.out.print(arr[x][y]);
             }
             System.out.println();
         }
     }
+
 
     public static void printArray(Object[] chars) {
         if (chars.length <= 0) {
@@ -50,7 +54,19 @@ public class LogUtils {
         }
     }
 
-    public static void logArr(int[] nums){
+    public static void printArray(Stack stack) {
+        if (stack.size() <= 0) {
+            System.out.println("error len = 0");
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
+        while (!stack.isEmpty()){
+            sb.append(stack.pop()+ ",");
+        }
+        System.out.print(sb.toString());
+    }
+
+    public static void logArr(int[] nums) {
         printArray(nums);
     }
 
