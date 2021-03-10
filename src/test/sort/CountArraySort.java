@@ -1,6 +1,5 @@
 package test.sort;
 
-import sun.rmi.runtime.Log;
 import test.LogUtils;
 
 import java.util.Arrays;
