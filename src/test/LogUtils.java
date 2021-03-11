@@ -26,6 +26,10 @@ public class LogUtils {
         System.out.println(s);
     }
 
+    public static void logLine(){
+        System.out.println("------------------------------------------------------------");
+    }
+
     public static void printArray(int[][] arr) {
         for (int x = 0; x < arr.length; x++) {
             for (int y = 0; y < arr[x].length; y++) {
