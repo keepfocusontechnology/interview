@@ -1,6 +1,7 @@
 package test;
 
 import java.util.LinkedList;
+import java.util.Stack;
 
 /**
  * 给定一个经过编码的字符串，返回它解码后的字符串。
@@ -24,7 +25,7 @@ import java.util.LinkedList;
 
 public class Test2020_0528 {
     public static void main(String[] args) {
-        String s = "3[a]2[bc]";
+        String s = "10[abc]";
 
         System.out.println(new Solution().decodeString(s));
 
@@ -35,23 +36,26 @@ public class Test2020_0528 {
         public String decodeString(String s) {
             StringBuilder res = new StringBuilder();
             int multi = 0;
-            LinkedList<Integer> stack_multi = new LinkedList<>();
-            LinkedList<String> stack_res = new LinkedList<>();
+            StringBuilder nums = new StringBuilder();
+            Stack<Integer> stack_multi = new Stack<>();
+            Stack<String> stack_res = new Stack<>();
             for (Character c : s.toCharArray()) {
                 System.out.println("c = " + c);
                 if (c == '[') {
-                    stack_multi.addLast(multi);
-                    stack_res.addLast(res.toString());
+                    stack_multi.push(multi);
+                    stack_res.push(res.toString());
                     System.out.println("stack_res.addLast(res.toString()); res=" + res.toString());
                     multi = 0;
+                    nums = new StringBuilder();
                     res = new StringBuilder();
                 } else if (c == ']') {
                     StringBuilder tmp = new StringBuilder();
-                    int cur_multi = stack_multi.removeLast();
+                    int cur_multi = stack_multi.pop();
                     for (int i = 0; i < cur_multi; i++) tmp.append(res);
-                    res = new StringBuilder(stack_res.removeLast() + tmp);
+                    res = new StringBuilder(stack_res.pop() + tmp);
                 } else if (c >= '0' && c <= '9') {
-                    multi = Integer.parseInt(c + "");
+                    nums.append(c);
+                    multi = Integer.parseInt(nums.toString());
                     System.out.println("multi = " + multi);
                 } else {
                     res.append(c);
@@ -59,7 +63,6 @@ public class Test2020_0528 {
                 }
             }
             return res.toString();
-
         }
 
         private String[] dfs(String s, int i) {
