@@ -17,28 +17,15 @@ public class ImportTest {
         final ImportKey importKey = new ImportKey();
 
 
-        LogUtils.log("排序前:");
-//
-//
-        int[] nums = {3, 8, 1, 9, 4, 5, 7, 10, 6};
-        LogUtils.printArray(nums);
-//
-        LogUtils.log("排序后:");
+//        LogUtils.log("排序前:");
+//        int[] nums = {3, 8, 1, 9, 4, 5, 7, 10, 6};
+//        LogUtils.printArray(nums);
+//        LogUtils.log("排序后:");
 
 //        LogUtils.printArray(importKey.quickSort(nums, 0, nums.length - 1));
-        LogUtils.printArray(importKey.shell_sort(nums));
-
-
-
-//
-//        LogUtils.log("杨辉三角打印:");
-//
-//        importKey.printTriangle(3);
-
-//?
-//
-//
-//
+//        LogUtils.printArray(importKey.shell_sort(nums));
+        LogUtils.logLn("杨辉三角打印:");
+        importKey.printTriangle(10);
 //        MyNode<Integer> node = importKey.mergeTwoNode(node1, node2_2);
 //
 //        LogUtils.log(node);

@@ -63,9 +63,11 @@ public class Main {
         User u1 = new User();
         u1.setFirstName("xixi");
         u1.setLastName("haha");
-        change(u1);
-
+        change(u1); // 不变 xixi haha
         System.out.println(u1);
+        changeR(u1); // 不变 ，只是copy了一份地址给它
+        System.out.println(u1);
+
     }
 
     public static void change(User u2) {
@@ -81,6 +83,7 @@ public class Main {
         u2.setFirstName("xx");
         u2.setLastName("yy");
         user = u2;
+        System.out.println("123"+user);
         return user;
     }
 
