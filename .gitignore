@@ -48,4 +48,5 @@ captures
 *.hprof
 node_modules
 .DS_Store
+.gradle
 
