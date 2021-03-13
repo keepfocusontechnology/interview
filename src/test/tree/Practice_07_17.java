@@ -1,4 +1,6 @@
 package test.tree;
+import test.node.TreeNode;
+
 import java.util.List;
 
 /**
@@ -60,7 +62,7 @@ public class Practice_07_17 {
     }
 
     static class Solution {
-        public List<List<String>> printTree(DualTreeNode root) {
+        public List<List<String>> printTree(TreeNode root) {
 
 
             return null;
