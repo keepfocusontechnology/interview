@@ -1,7 +1,7 @@
 package test.key;
 
 import test.LogUtils;
-import test.link.MyNode;
+import test.link.ListNode;
 import test.node.TreeNode;
 
 import java.util.*;
@@ -86,7 +86,7 @@ public class ImportKey {
      *
      * @return
      */
-    public MyNode<Integer> mergeTwoNode(MyNode<Integer> l1, MyNode<Integer> l2) {
+    public ListNode<Integer> mergeTwoNode(ListNode<Integer> l1, ListNode<Integer> l2) {
         if (l1 == null) {
             return l2;
         }
@@ -129,11 +129,11 @@ public class ImportKey {
      * 单链表反转
      */
 
-    public MyNode<Integer> reverse(MyNode<Integer> src) {
+    public ListNode<Integer> reverse(ListNode<Integer> src) {
         if (src.next == null) {
             return src;
         }
-        MyNode<Integer> node = reverse(src.next);
+        ListNode<Integer> node = reverse(src.next);
         src.next.next = src;
         src.next = null;
         return node;
@@ -290,7 +290,7 @@ public class ImportKey {
         return res.toString();
     }
 
-    public MyNode<Integer> addTwoNumbers(MyNode<Integer> l1, MyNode<Integer> l2) {
+    public ListNode<Integer> addTwoNumbers(ListNode<Integer> l1, ListNode<Integer> l2) {
         StringBuilder s1 = new StringBuilder();
         while (l1!= null) {
             s1.append(l1.val);
@@ -309,11 +309,11 @@ public class ImportKey {
         String temp = String.valueOf(result);
         char[] ctrs = temp.toCharArray();
 
-        MyNode<Integer> head = new MyNode<>(Integer.valueOf(ctrs[0] + ""));
-        MyNode<Integer> node = new MyNode<>(Integer.valueOf(ctrs[1] + ""));
+        ListNode<Integer> head = new ListNode<>(Integer.valueOf(ctrs[0] + ""));
+        ListNode<Integer> node = new ListNode<>(Integer.valueOf(ctrs[1] + ""));
         head.next = node;
         for (int i = 2; i < ctrs.length; i++) {
-            MyNode<Integer> res = new MyNode<>(Integer.valueOf(ctrs[2] + ""));
+            ListNode<Integer> res = new ListNode<>(Integer.valueOf(ctrs[2] + ""));
             node.next = res;
             node = res;
         }

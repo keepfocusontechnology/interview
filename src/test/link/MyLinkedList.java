@@ -11,8 +11,8 @@ import test.LogUtils;
  **/
 public class MyLinkedList<T> {
 
-    private MyNode<T> firstNode; //头节点不占容量
-    private MyNode<T> lastNode;
+    private ListNode<T> firstNode; //头节点不占容量
+    private ListNode<T> lastNode;
 
     private int size;
 
@@ -22,7 +22,7 @@ public class MyLinkedList<T> {
     }
 
     public MyLinkedList() {
-        firstNode = new MyNode<>();
+        firstNode = new ListNode<>();
         lastNode = firstNode;
         size = 0;
     }
@@ -36,7 +36,7 @@ public class MyLinkedList<T> {
         if (null == t) {
             return;
         }
-        MyNode<T> node = new MyNode<>(t);
+        ListNode<T> node = new ListNode<>(t);
         lastNode.next = node;
         lastNode = node;
         size++;
@@ -48,7 +48,7 @@ public class MyLinkedList<T> {
      *
      * @param t
      */
-    public void add(MyNode<T> t) {
+    public void add(ListNode<T> t) {
         if (null == t) {
             return;
         }
@@ -62,15 +62,15 @@ public class MyLinkedList<T> {
             return null;
         }
         if (index == 0) { //头结点不占容量
-            final MyNode<T> next = firstNode.next;
+            final ListNode<T> next = firstNode.next;
             firstNode.next = next.next;
             size--;
             return next.val;
         }
-        MyNode<T> cur = getNode(index);
+        ListNode<T> cur = getNode(index);
         for (int i = 0; i < size; i++) {
             if (i == index) {
-                MyNode<T> node = getNode(index - 1);
+                ListNode<T> node = getNode(index - 1);
                 node.next = cur.next;
                 size--;
                 break;
@@ -79,7 +79,7 @@ public class MyLinkedList<T> {
         return cur.val;
     }
 
-    public void delete(MyNode<T> node) {
+    public void delete(ListNode<T> node) {
         if (node == null) {
             return;
         }
@@ -87,12 +87,12 @@ public class MyLinkedList<T> {
         for (int i = 0; i < size; i++) {
             if (getNode(i) == node) {
                 if (i == 0) {
-                    final MyNode<T> node1 = getNode(0);
+                    final ListNode<T> node1 = getNode(0);
                     firstNode.next = node1.next;
                     size--;
                     return;
                 }
-                MyNode<T> cur = getNode(i - 1);
+                ListNode<T> cur = getNode(i - 1);
                 cur.next = node.next;
                 size--;
                 break;
@@ -101,11 +101,11 @@ public class MyLinkedList<T> {
     }
 
 
-    public MyNode<T> getNode(int index) {
+    public ListNode<T> getNode(int index) {
         if (index < 0 || index >= size) {
             return null;
         }
-        MyNode<T> cur = firstNode.next;
+        ListNode<T> cur = firstNode.next;
         for (int i = 0; i < size; i++) {
             if (i == index) {
                 return cur;
@@ -120,7 +120,7 @@ public class MyLinkedList<T> {
             LogUtils.log("size == 0 || firstNode == null");
             return;
         }
-        MyNode<T> node = firstNode.next;
+        ListNode<T> node = firstNode.next;
 //
 //        for (int i = 0; i < size; i++) {
 //            SysUtils.log(node.val);
@@ -136,8 +136,8 @@ public class MyLinkedList<T> {
 
     public boolean isCircle() {
 
-        MyNode<T> node1 = firstNode.next;
-        MyNode<T> node2 = node1.next;
+        ListNode<T> node1 = firstNode.next;
+        ListNode<T> node2 = node1.next;
         while (node2 != null) {
             if (node1 == node2) {
                 return true;

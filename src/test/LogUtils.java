@@ -1,5 +1,7 @@
 package test;
 
+import test.link.ListNode;
+
 import java.util.Stack;
 
 public class LogUtils {
@@ -80,6 +82,12 @@ public class LogUtils {
             return;
         }
         StringBuilder sb = new StringBuilder();
+
+        if(chars.length==1){
+            sb.append("["+chars[0] + "]");
+            System.out.println(sb.toString());
+            return;
+        }
         for (int n = 0; n < chars.length; n++) {
             if (n == 0) {
                 sb.append("[" + chars[n] + ",");
@@ -90,5 +98,18 @@ public class LogUtils {
             }
         }
         System.out.println(sb.toString());
+    }
+
+
+    public static void logNode(ListNode<Integer> node){
+        if(node!=null){
+            int[] nums = new int[node.getLength(node)];
+            int i=0;
+            while (node!=null){
+                nums[i++] =node.val;
+                node = node.next;
+            }
+            printArray(nums);
+        }
     }
 }
