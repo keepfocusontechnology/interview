@@ -1,4 +1,6 @@
 package test.tree;
+import test.node.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +42,7 @@ public class Practice_07_13 {
     }
 
     static class Solution {
-        public boolean checkSubTree(DualTreeNode t1, DualTreeNode t2) {
+        public boolean checkSubTree(TreeNode t1, TreeNode t2) {
             List<Integer> node = getNode(t1);
             List<Integer> node1 = getNode(t2);
 
@@ -53,7 +55,7 @@ public class Practice_07_13 {
         }
 
 
-        public List<Integer> getNode(DualTreeNode node) {
+        public List<Integer> getNode(TreeNode node) {
 
             List<Integer> list = new ArrayList<>();
 

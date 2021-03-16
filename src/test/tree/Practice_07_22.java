@@ -1,5 +1,7 @@
 package test.tree;
 
+import test.node.TreeNode;
+
 /**
  * 镜像二叉树
  *
@@ -14,25 +16,25 @@ public class Practice_07_22 {
 
         int[] nums = {8,6,5,7,10,9,11};
 
-        DualTreeNode dualTreeNode = TreeStudy.buildTree(nums);
+        TreeNode TreeNode = TreeStudy.buildTree(nums);
 
-        TreeStudy.preRecursive(dualTreeNode);
+        TreeStudy.preRecursive(TreeNode);
 
-        mirrorTree(dualTreeNode);
+        mirrorTree(TreeNode);
 
         System.out.println("---");
 
-        TreeStudy.preRecursive(dualTreeNode);
+        TreeStudy.preRecursive(TreeNode);
 
     }
 
 
-    static void mirrorTree(DualTreeNode node) {
+    static void mirrorTree(TreeNode node) {
 
         if (node == null) {
             return;
         }
-        DualTreeNode temp = node.left;
+        TreeNode temp = node.left;
         node.left = node.right;
         node.right = temp;
 

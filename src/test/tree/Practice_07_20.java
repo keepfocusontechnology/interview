@@ -1,5 +1,7 @@
 package test.tree;
 
+import test.node.TreeNode;
+
 /**
  * https://leetcode-cn.com/problems/balanced-binary-tree
  * <p>
@@ -15,18 +17,18 @@ public class Practice_07_20 {
 
         int[] tree1 = {3, 9, 20, 0, 0, 15, 7};
 
-        final DualTreeNode dualTreeNode = TreeStudy.buildTree(tree1);
+        final TreeNode TreeNode = TreeStudy.buildTree(tree1);
 
-        new Solution().isBalanced(dualTreeNode);
+        new Solution().isBalanced(TreeNode);
     }
 
     static class Solution {
 
-        public boolean isBalanced(DualTreeNode root) {
+        public boolean isBalanced(TreeNode root) {
             return recur(root) != -1;
         }
 
-        private int recur(DualTreeNode root) {
+        private int recur(TreeNode root) {
             if (root == null) {
                 System.out.println("return 0 ");
                 return 0;
