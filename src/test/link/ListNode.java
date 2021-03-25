@@ -10,9 +10,9 @@ package test.link;
 public class ListNode<T> {
 
     public T val;
-    public ListNode next;
+    public ListNode<T> next;
 
-    public ListNode(T val, ListNode next) {
+    public ListNode(T val, ListNode<T> next) {
         this.val = val;
         this.next = next;
     }
@@ -31,6 +31,16 @@ public class ListNode<T> {
                 ", next=" + next +
                 '}';
     }
+
+    public void add(T newval) {
+        ListNode<T> newNode = new ListNode<>(newval);
+        if(next == null)
+            next = newNode;
+        else {
+            next.add(newval);
+        }
+    }
+
 
     public static int getLength(ListNode node){
         int len = 1;
