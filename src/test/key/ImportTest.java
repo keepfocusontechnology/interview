@@ -1,5 +1,6 @@
 package test.key;
 
+import sun.rmi.runtime.Log;
 import test.LogUtils;
 
 /**
@@ -13,7 +14,7 @@ public class ImportTest {
 
     public static void main(String[] args) {
         final ImportKey importKey = new ImportKey();
-
+            LogUtils.log(importKey.minPartitions("123456"));
 
 //        LogUtils.log("排序前:");
 //        int[] nums = {3, 8, 1, 9, 4, 5, 7, 10, 6};
@@ -22,8 +23,8 @@ public class ImportTest {
 
 //        LogUtils.printArray(importKey.quickSort(nums, 0, nums.length - 1));
 //        LogUtils.printArray(importKey.shell_sort(nums));
-        LogUtils.logLn("杨辉三角打印:");
-        importKey.printTriangle(10);
+//        LogUtils.logLn("杨辉三角打印:");
+//        importKey.printTriangle(10);
 //        MyNode<Integer> node = importKey.mergeTwoNode(node1, node2_2);
 //
 //        LogUtils.log(node);
