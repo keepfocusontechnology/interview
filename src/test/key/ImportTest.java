@@ -1,8 +1,6 @@
 package test.key;
 
 import test.LogUtils;
-import test.link.MyNode;
-import test.node.TreeNode;
 
 /**
  * 测试归类

@@ -13,18 +13,18 @@ public class LinkedTest {
 
     public static void main(String[] args) {
         MyLinkedList<Integer> list = new MyLinkedList<>();
-        MyNode<Integer> node1 = new MyNode<>(1);
-        MyNode<Integer> node2 = new MyNode<>(2);
-        MyNode<Integer> node3 = new MyNode<>(3);
-        MyNode<Integer> node4 = new MyNode<>(4);
-        MyNode<Integer> node5 = new MyNode<>(5);
-        list.add(node1);
-        list.add(node2);
-        list.add(node3);
-        list.add(node4);
-        list.add(node5);
-
-        list.printSelf();
+        ListNode<Integer> node1 = new ListNode<>(1);
+        ListNode<Integer> node2 = new ListNode<>(2);
+        ListNode<Integer> node3 = new ListNode<>(3);
+        ListNode<Integer> node4 = new ListNode<>(4);
+        ListNode<Integer> node5 = new ListNode<>(5);
+        ListNode<Integer> node6 = new ListNode<>(6);
+//        list.add(node1);
+//        list.add(node2);
+//        list.add(node3);
+//        list.add(node4);
+//        list.add(node5);
+//        list.printSelf();
 //        SysUtils.log("----");
 //        final Integer delete = list.delete(1);
 //        SysUtils.log(delete);
@@ -33,5 +33,15 @@ public class LinkedTest {
 
 //        boolean circle = list.isCircle();
 //        LogUtils.log(circle);
+        node1.next =node2;
+        node2.next =node3;
+        node3.next =node4;
+        node4.next =node5;
+        node5.next =node6;
+
+
+        LogUtils.logNode(node6);
+//        ListNode node =  NodeExercises.delK(node1,2);
+        LogUtils.logNode(NodeExercises.delK(node6,1));
     }
 }
