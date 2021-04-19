@@ -3,6 +3,8 @@ package test.key;
 import sun.rmi.runtime.Log;
 import test.LogUtils;
 
+import java.util.List;
+
 /**
  * 测试归类
  *
@@ -14,7 +16,7 @@ public class ImportTest {
 
     public static void main(String[] args) {
         final ImportKey importKey = new ImportKey();
-            LogUtils.log(importKey.minPartitions("123456"));
+//            LogUtils.log(importKey.minPartitions("123456"));
 
 //        LogUtils.log("排序前:");
 //        int[] nums = {3, 8, 1, 9, 4, 5, 7, 10, 6};
@@ -73,5 +75,13 @@ public class ImportTest {
 //        System.out.println(importKey.printZTree(root1));
 //        importKey.dfs(root1);
 //        importKey.bfs(root1);
+
+
+        final List<String> abba = importKey.getEchoStrList("abccbabdef");
+
+        LogUtils.printArray(abba);
     }
+
+
+
 }

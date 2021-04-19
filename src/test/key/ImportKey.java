@@ -1,5 +1,6 @@
 package test.key;
 
+import com.sun.istack.internal.NotNull;
 import test.LogUtils;
 import test.link.ListNode;
 import test.node.TreeNode;
@@ -336,8 +337,6 @@ public class ImportKey {
             node.next = res;
             node = res;
         }
-
-
         return reverse(head);
     }
 
@@ -390,6 +389,70 @@ public class ImportKey {
     }
 
 
+    /**
+     * 判断当前字符串是否为回文字符串。
+     *
+     * @paramas str 不能为null，源数据
+     */
+    public boolean isEchoStr(@NotNull String str) {
+        if (str.length() < 2) {
+            return false;
+        }
+
+        char[] ch = str.toCharArray();
+
+        int leftIndex = 0;
+        int rightIndex = ch.length - 1;
+
+        while (leftIndex < rightIndex) {
+            if (ch[leftIndex] != ch[rightIndex]) {
+                return false;
+            }
+            leftIndex++;
+            rightIndex--;
+        }
+        return true;
+    }
 
 
+    public List<String> getEchoStrList(@NotNull String str) {
+        int len = str.length();
+        if (len < 2) {
+            return null;
+        }
+        int mid = 2*len-1;
+        List<String> result = new ArrayList<>();
+        for (int i = mid; i >= 0; i--) {
+            for (int j = mid + 1; j < str.length(); j++) {
+                String temp = str.substring(i, j+1);
+                if (isEchoStr(temp)) {
+                    result.add(temp);
+                }
+            }
+        }
+        return result;
+    }
+
+
+}
+
+
+
+class Solution {
+    int num = 0;
+    public int countSubstrings(String s) {
+        for (int i=0; i < s.length(); i++){
+            count(s, i, i);//回文串长度为奇数
+            count(s, i, i+1);//回文串长度为偶数
+        }
+        return num;
+    }
+
+    public void count(String s, int start, int end){
+        while(start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)){
+            num++;
+            start--;
+            end++;
+        }
+    }
 }

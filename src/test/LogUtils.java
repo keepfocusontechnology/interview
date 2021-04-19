@@ -2,6 +2,7 @@ package test;
 
 import test.link.ListNode;
 
+import java.util.List;
 import java.util.Stack;
 
 public class LogUtils {
@@ -95,6 +96,31 @@ public class LogUtils {
                 sb.append(chars[n] + "]");
             } else {
                 sb.append(chars[n] + ",");
+            }
+        }
+        System.out.println(sb.toString());
+    }
+
+
+    public static void printArray(List<String> chars) {
+        if (chars.size() <= 0) {
+            System.out.println("error len = 0");
+            return;
+        }
+        StringBuilder sb = new StringBuilder();
+
+        if(chars.size()==1){
+            sb.append("["+chars.get(0) + "]");
+            System.out.println(sb.toString());
+            return;
+        }
+        for (int n = 0; n < chars.size(); n++) {
+            if (n == 0) {
+                sb.append("[" + chars.get(n)+ ",");
+            } else if (n == chars.size() - 1) {
+                sb.append(chars.get(n) + "]");
+            } else {
+                sb.append(chars.get(n) + ",");
             }
         }
         System.out.println(sb.toString());
