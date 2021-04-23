@@ -77,9 +77,12 @@ public class ImportTest {
 //        importKey.bfs(root1);
 
 
-        final List<String> abba = importKey.getEchoStrList("abccbabdef");
+//        final List<String> abba = importKey.getEchoStrList("abccbabdef");
+//
+//        LogUtils.printArray(abba);
 
-        LogUtils.printArray(abba);
+        LogUtils.printArray(importKey.swapNumbers(new int[]{1,2}));
+
     }
 
 

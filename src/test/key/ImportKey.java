@@ -434,6 +434,12 @@ public class ImportKey {
     }
 
 
+
+    public int[] swapNumbers(int[] numbers) {
+        numbers[0] = numbers[0] + numbers[1] -(numbers[1]=numbers[0]);
+        return numbers;
+    }
+
 }
 
 
@@ -455,4 +461,6 @@ class Solution {
             end++;
         }
     }
+
 }
+
