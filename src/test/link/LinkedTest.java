@@ -1,6 +1,7 @@
 package test.link;
 
 import test.LogUtils;
+import test.key.ImportKey;
 
 /**
  * 链表测试
@@ -40,8 +41,11 @@ public class LinkedTest {
         node5.next =node6;
 
 
-        LogUtils.logNode(node6);
+        LogUtils.logNode(node1);
 //        ListNode node =  NodeExercises.delK(node1,2);
-        LogUtils.logNode(NodeExercises.delK(node6,1));
+//        LogUtils.logNode(NodeExercises.delK(node6,1));
+
+        ImportKey key = new ImportKey();
+        LogUtils.logNode(key.reverse1(node1));
     }
 }

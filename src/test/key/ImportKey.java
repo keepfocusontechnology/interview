@@ -126,9 +126,8 @@ public class ImportKey {
     }
 
     /**
-     * 单链表反转
+     * 单链表反转--递归
      */
-
     public ListNode<Integer> reverse(ListNode<Integer> src) {
         if (src.next == null) {
             return src;
@@ -139,6 +138,21 @@ public class ImportKey {
         return node;
     }
 
+
+    /**
+     * 循环单链表反转
+     * @param src
+     * @return
+     */
+    public  ListNode<Integer> reverse1(ListNode<Integer> src){
+        while (src.next !=null){
+            ListNode<Integer> next = src.next;
+            src.next.next = src;
+            src.next = null;
+            src = next;
+        }
+        return src;
+    }
 
     /**
      * 二叉树Z字型打印
