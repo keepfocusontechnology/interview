@@ -1,5 +1,6 @@
 package test.key;
 
+import com.sun.istack.internal.NotNull;
 import test.LogUtils;
 import test.link.ListNode;
 import test.node.TreeNode;
@@ -160,31 +161,31 @@ public class ImportKey {
 
     public List<ArrayList<Integer>> printZTree(TreeNode pRoot) {
         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
-        if(pRoot == null)return list;//注意考虑到空元素，并且此时返回list，不是null
+        if (pRoot == null) return list;//注意考虑到空元素，并且此时返回list，不是null
 
         Stack<TreeNode> stack1 = new Stack<>();
         Stack<TreeNode> stack2 = new Stack<>();
         stack2.add(pRoot);
-        while (!stack2.isEmpty() || !stack1.isEmpty()){
+        while (!stack2.isEmpty() || !stack1.isEmpty()) {
             ArrayList<Integer> subList = new ArrayList<>();
-            if(!stack2.isEmpty()){
+            if (!stack2.isEmpty()) {
                 //需要将stack2中的元素全部弹出，此时才是该层的所有节点
-                while (!stack2.isEmpty()){
+                while (!stack2.isEmpty()) {
                     TreeNode curNode = stack2.pop();
                     subList.add(curNode.val);
                     //弹出stack2中的元素的同时，需要将其中元素的左->右节点压入栈stack1
-                    if(curNode.left != null) stack1.add(curNode.left);
-                    if(curNode.right != null) stack1.add(curNode.right);
+                    if (curNode.left != null) stack1.add(curNode.left);
+                    if (curNode.right != null) stack1.add(curNode.right);
                 }
                 list.add(subList);
             } else {
                 //需要将stack1中的元素全部弹出，此时才是该层的所有节点
-                while (!stack1.isEmpty()){
+                while (!stack1.isEmpty()) {
                     TreeNode curNode1 = stack1.pop();
                     subList.add(curNode1.val);
                     //弹出stack1中的元素的同时，需要将其中元素的右->左节点压入栈stack2
-                    if(curNode1.right != null) stack2.add(curNode1.right);
-                    if(curNode1.left != null) stack2.add(curNode1.left);
+                    if (curNode1.right != null) stack2.add(curNode1.right);
+                    if (curNode1.left != null) stack2.add(curNode1.left);
                 }
                 list.add(subList);
             }
@@ -196,23 +197,24 @@ public class ImportKey {
 
     /**
      * 树的广度遍历
+     *
      * @param node
      */
-    public void bfs(TreeNode node){
-        if(node == null){
+    public void bfs(TreeNode node) {
+        if (node == null) {
             return;
         }
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(node);
 
-        while (!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             final TreeNode pop = queue.poll();
-            LogUtils.log(pop.val+" ");
+            LogUtils.log(pop.val + " ");
 
-            if(pop.left!=null){
+            if (pop.left != null) {
                 queue.add(pop.left);
             }
-            if(pop.right!=null){
+            if (pop.right != null) {
                 queue.add(pop.right);
             }
 
@@ -222,26 +224,44 @@ public class ImportKey {
 
     /**
      * 树的深度遍历
+     *
      * @param node
      */
-    public void dfs(TreeNode node){
-        if(node == null){
+    public void dfs(TreeNode node) {
+        if (node == null) {
             return;
         }
         Stack<TreeNode> stack = new Stack<>();
         stack.push(node);
 
-        while (!stack.isEmpty()){
+        while (!stack.isEmpty()) {
             final TreeNode pop = stack.pop();
-           LogUtils.log(pop.val+" ");
-            if(pop.right!=null){
+            LogUtils.log(pop.val + " ");
+            if (pop.right != null) {
                 stack.push(pop.right);
             }
 
-            if(pop.left!=null){
+            if (pop.left != null) {
                 stack.push(pop.left);
             }
         }
+    }
+
+
+    /**
+     * 找到字符串中最大的数字
+     *
+     * @param n
+     * @return
+     */
+    public int minPartitions(String n) {
+        final char[] chars = n.toCharArray();
+        int max = chars[0];
+
+        for (int i = 0; i < chars.length; i++) {
+            max = Math.max(max, chars[i]);
+        }
+        return max - 48;
     }
 
 
@@ -306,7 +326,7 @@ public class ImportKey {
 
     public ListNode<Integer> addTwoNumbers(ListNode<Integer> l1, ListNode<Integer> l2) {
         StringBuilder s1 = new StringBuilder();
-        while (l1!= null) {
+        while (l1 != null) {
             s1.append(l1.val);
             l1 = l1.next;
         }
@@ -331,8 +351,6 @@ public class ImportKey {
             node.next = res;
             node = res;
         }
-
-
         return reverse(head);
     }
 
@@ -359,28 +377,104 @@ public class ImportKey {
     /***
      * 希尔排序内核,仿插入排序改造
      */
-    void shell_sort_kernel(int[] arr,int gap){
-        int tmp,i,j,len;
+    void shell_sort_kernel(int[] arr, int gap) {
+        int tmp, i, j, len;
         len = arr.length;
-        for(i=gap;i<len;i++){
-            tmp=arr[i];
-            for(j=i-gap;j>=0 && arr[j]>tmp;j-=gap){
-                arr[j+gap]=arr[j];
+        for (i = gap; i < len; i++) {
+            tmp = arr[i];
+            for (j = i - gap; j >= 0 && arr[j] > tmp; j -= gap) {
+                arr[j + gap] = arr[j];
             }
-            arr[j+gap]=tmp;
+            arr[j + gap] = tmp;
         }
     }
+
     /***
      * 希尔排序
      */
-    int[] shell_sort(int[] arr){
+    int[] shell_sort(int[] arr) {
         int gap = arr.length / 2;
-        while (gap>=1){
-            shell_sort_kernel(arr,gap);
+        while (gap >= 1) {
+            shell_sort_kernel(arr, gap);
             LogUtils.logArr(arr);
-            gap = gap/2;
+            gap = gap / 2;
         }
         return arr;
     }
 
+
+    /**
+     * 判断当前字符串是否为回文字符串。
+     *
+     * @paramas str 不能为null，源数据
+     */
+    public boolean isEchoStr(@NotNull String str) {
+        if (str.length() < 2) {
+            return false;
+        }
+
+        char[] ch = str.toCharArray();
+
+        int leftIndex = 0;
+        int rightIndex = ch.length - 1;
+
+        while (leftIndex < rightIndex) {
+            if (ch[leftIndex] != ch[rightIndex]) {
+                return false;
+            }
+            leftIndex++;
+            rightIndex--;
+        }
+        return true;
+    }
+
+
+    public List<String> getEchoStrList(@NotNull String str) {
+        int len = str.length();
+        if (len < 2) {
+            return null;
+        }
+        int mid = 2*len-1;
+        List<String> result = new ArrayList<>();
+        for (int i = mid; i >= 0; i--) {
+            for (int j = mid + 1; j < str.length(); j++) {
+                String temp = str.substring(i, j+1);
+                if (isEchoStr(temp)) {
+                    result.add(temp);
+                }
+            }
+        }
+        return result;
+    }
+
+
+
+    public int[] swapNumbers(int[] numbers) {
+        numbers[0] = numbers[0] + numbers[1] -(numbers[1]=numbers[0]);
+        return numbers;
+    }
+
 }
+
+
+
+class Solution {
+    int num = 0;
+    public int countSubstrings(String s) {
+        for (int i=0; i < s.length(); i++){
+            count(s, i, i);//回文串长度为奇数
+            count(s, i, i+1);//回文串长度为偶数
+        }
+        return num;
+    }
+
+    public void count(String s, int start, int end){
+        while(start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)){
+            num++;
+            start--;
+            end++;
+        }
+    }
+
+}
+
