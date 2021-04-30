@@ -1,6 +1,5 @@
 package test.key;
 
-import com.sun.istack.internal.NotNull;
 import test.LogUtils;
 import test.link.ListNode;
 import test.node.TreeNode;
@@ -290,9 +289,9 @@ public class ImportKey {
 
 
     /**
-     * 将一个给定字符串根据给定的行数，以从上往下、从左到右进行 Z 字形排列。
+     * 将一个给定字符串根据给定的行数，以从上往下、从左到右进行Z 字形排列。
      * <p>
-     * 比如输入字符串为 "LEETCODEISHIRING" 行数为 3 时，排列如下：
+     * 比如输入字符串为 "LEETCODEISHIRING"行数为 3 时，排列如下：
      * <p>
      * L   C   I   R
      * E T O E S I I G
@@ -408,7 +407,7 @@ public class ImportKey {
      *
      * @paramas str 不能为null，源数据
      */
-    public boolean isEchoStr(@NotNull String str) {
+    public boolean isEchoStr(String str) {
         if (str.length() < 2) {
             return false;
         }
@@ -429,7 +428,7 @@ public class ImportKey {
     }
 
 
-    public List<String> getEchoStrList(@NotNull String str) {
+    public List<String> getEchoStrList( String str) {
         int len = str.length();
         if (len < 2) {
             return null;
@@ -460,6 +459,12 @@ public class ImportKey {
 
 class Solution {
     int num = 0;
+
+    /**
+     * 回文字符串输出
+     * @param s
+     * @return
+     */
     public int countSubstrings(String s) {
         for (int i=0; i < s.length(); i++){
             count(s, i, i);//回文串长度为奇数
